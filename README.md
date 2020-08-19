@@ -1,7 +1,8 @@
 # Dotnet - Docker mod for code-server
 
 This mod adds dotnet-sdk to code-server, to be installed/updated during container start.
-Current versions:
+NuGet packages are cached to /config/.nuget so it will be persisted to your /config mount between code-server updates.
+Installed versions:
 * 2.1
 * 3.1
 
