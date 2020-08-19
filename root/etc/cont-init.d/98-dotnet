@@ -1,12 +1,14 @@
 #!/usr/bin/with-contenv bash
 
 echo "**** installing apt-transport-https and dotnet ****"
+# no lsb-release and don't want to install 22mb just for that
+ubuntu_version=$(cat /etc/os-release | sed -r -n 's/VERSION_ID="(.*)"/\1/p')
 apt-get update && \
   apt-get install -y wget apt-transport-https wget && \
   add-apt-repository universe
-wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O /tmp/packages-microsoft-prod.deb && \
+wget "https://packages.microsoft.com/config/ubuntu/$ubuntu_version/packages-microsoft-prod.deb" -O /tmp/packages-microsoft-prod.deb && \
   dpkg -i /tmp/packages-microsoft-prod.deb && \
-  rm /tmp/packages-microsoft-prod.deb && \
+  rm /tmp/packages-microsoft-prod.deb
 apt-get update
-  apt-get install -y dotnet-sdk-3.1
+  apt-get install -y dotnet-sdk-3.1 dotnet-sdk-2.1
 dotnet --info
