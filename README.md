@@ -1,6 +1,9 @@
 # Dotnet - Docker mod for code-server
 
-This mod adds rsync to code-server, to be installed/updated during container start.
+This mod adds dotnet-sdk to code-server, to be installed/updated during container start.
+Current versions:
+* 2.1
+* 3.1
 
 In code-server docker arguments, set an environment variable `DOCKER_MODS=linuxserver/mods:code-server-dotnet`
 
